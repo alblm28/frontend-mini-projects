@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+:root {
+    --verde:        #2e7d5e;
+    --verde-claro:  #4aab85;
+    --texto:        #e8f5f0;
+    --texto-suave:  #b8d8cc;
+    --borde:        rgba(74, 171, 133, 0.35);
+    --superficie:   rgba(10, 40, 28, 0.72);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-image: url('recursos/cienaga.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--texto);
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+
+header {
+    max-width: 660px;
+    margin: 0 auto 36px auto;
+    text-align: center;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--borde);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--texto);
+    margin-bottom: 6px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+header p {
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+    font-weight: 300;
+}
+
+main {
+    max-width: 660px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+article {
+    background: var(--superficie);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--verde-claro);
+    border-radius: 10px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+article:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+article h2 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 10px;
+}
+
+article p {
+    font-size: 0.96rem;
+    line-height: 1.85;
+    color: var(--texto-suave);
+}
+
+footer {
+    max-width: 660px;
+    margin: 32px auto 0 auto;
+}
+
+#volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 26px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    background: var(--verde);
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#volver:hover {
+    background: var(--verde-claro);
+    transform: translateY(-2px);
+}
+
+#volver:active {
+    transform: translateY(0);
+}
+
+#volver:hover {
+    background: var(--verde-claro);
+    transform: translateY(-2px);
+}
+
+#volver:active {
+    transform: translateY(0);
+}

@@ -1,0 +1,339 @@
+/* VARIABLES */
+:root {
+    --verde-oscuro:   #345327;
+    --verde-medio:    #4a7c2f;
+    --verde-claro:    #65933f;
+    --marron-oscuro:  #3b2510;
+    --marron-medio:   #6b3d1e;
+    --marron-claro:   #a0622a;
+    --crema:          #f5ecd0;
+    --crema-oscura:   #d4b896;
+    --dorado:         #c9a84c;
+    --rojo:           #c0392b;
+    --naranja:        #e67e22;
+    --verde-resultado:#27ae60;
+    --morado-oscuro:#4b1469;
+    --morado:#775789;
+
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-image: url('recursos/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--marron-oscuro);
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-align: center;
+    color: var(--crema);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 30px rgba(201,168,76,0.6), -1px -1px 0 var(--marron-oscuro);
+    margin-bottom: 22px;
+    letter-spacing: 3px;
+}
+
+
+h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--crema);
+    text-align: center;
+    margin-bottom: 14px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    letter-spacing: 0.5px;
+}
+/*COLUMNAS*/
+#layout {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#columna-izquierda {
+    flex: 0 0 320px;
+    background: rgba(43, 90, 27, 0.88);
+    border: 3px solid ;
+    border-radius: 14px;
+    padding: 22px 20px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.5), inset 0 0 40px rgba(0,0,0,0.2);
+}
+
+#columna-derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* FIELDSETS */
+fieldset {
+    border: 1px solid var(--verde-claro);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    background: rgba(13, 21, 14, 0.15);
+}
+
+legend {
+    font-family: 'Nunito', sans-serif;
+    color: var(--dorado);
+    font-size: 1rem;
+    padding: 0 8px;
+    font-weight: bold;
+}
+
+/* OPCIONES */
+select {
+    background: var(--marron-oscuro);
+    color: var(--crema);
+    border: 1px solid var(--dorado);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--verde-claro);
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--crema);
+}
+
+label:hover {
+    color: var(--dorado);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: var(--dorado);
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+/* BOTON ATACAR */
+button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--crema);
+    background: linear-gradient(135deg, var(--marron-medio), var(--marron-oscuro));
+    border: 2px solid var(--dorado);
+    border-radius: 8px;
+    padding: 12px 30px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--marron-claro), var(--marron-medio));
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/*CAJA IMAGENES*/
+#zona-imagenes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 10px;
+    min-height: 170px;
+}
+
+#imagenes-personajes,
+#imagenes-armaduras {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 14px;
+    transition: box-shadow 0.8s ease;
+}
+
+#imagenes-personajes.con-imagen,
+#imagenes-armaduras.con-imagen {
+    background: rgba(43, 90, 27, 0.75);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#imagenes-personajes img,
+#imagenes-armaduras img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+img.oculto {
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+}
+
+img.visible {
+    opacity: 1;
+    transform: scale(1);
+    border: 2px solid var(--dorado);
+    box-shadow: 0 0 18px rgba(201,168,76,0.5);
+    pointer-events: auto;
+}
+
+/* BARRA DE VIDA */
+
+#div-vida-enemigo,#div-vida-jugador{
+    background: rgba(43, 90, 27, 0.7);
+    border: 2px solid var(--marron-medio);
+    border-radius: 14px;
+    padding: 14px 20px;
+}
+
+#etiqueta-vida, #etiqueta-vida-jugador{
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: var(--crema);
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+#vida-actual, #vida-actual-jugador{
+    font-weight: bold;
+    color: var(--verde-claro);
+    transition: color 0.5s;
+}
+
+#barra-vida-contenedor, #barra-vida-contenedor-jugador{
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--marron-medio);
+    border-radius: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+
+#barra-vida,#barra-vida-jugador{/*en el js se le baja width segun el daño*/
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, var(--verde-oscuro), var(--verde-claro));
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+/* RESULTADO */
+#resultado:empty {
+    display: none;
+}
+
+#resultado {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    background: rgba(245, 236, 208, 0.92);
+    border: 2px solid var(--marron-medio);
+    border-radius: 14px;
+    padding: 16px 22px;
+    line-height: 1.9;
+    color: var(--marron-oscuro);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: apareceResultado 0.4s ease-out;
+}
+
+@keyframes apareceResultado {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+#resultado.daño-alto  { border-color: var(--rojo);    color: var(--rojo); }
+#resultado.daño-medio { border-color: var(--naranja); color: var(--naranja); }
+#resultado.daño-bajo  { border-color: var(--verde-resultado); color: var(--verde-resultado); }
+
+
+#resultado.victoria {
+    border-color: var(--dorado);
+    color: var(--marron-oscuro);
+    background: linear-gradient(135deg, var(--crema) 0%, #ffe08a 50%, var(--crema-oscura) 100%);
+    box-shadow: 0 0 30px rgba(201,168,76,0.8), 0 0 60px rgba(201,168,76,0.4);
+    animation: brilloVictoria 1.2s ease-out, apareceResultado 0.4s ease-out;
+}
+#resultado .texto-victoria {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--marron-oscuro);
+    text-shadow: 1px 1px 0 var(--dorado), 0 0 20px rgba(201,168,76,0.8);
+    letter-spacing: 4px;
+    margin-top: 10px;
+    animation: zoomVictoriaDerrota 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#resultado.derrota {
+    border-color: var(--morado-oscuro);
+    color: var(--morado-oscuro);
+    background: linear-gradient(135deg, var(--morado) 0%, #dc8aff 50%, var(--morado-oscuro) 100%);
+    box-shadow: 0 0 30px rgba(159, 76, 201, 0.8), 0 0 60px rgba(186, 76, 201, 0.4);
+    animation: brilloDerrota 1.2s ease-out, apareceResultado 0.4s ease-out;
+}
+#resultado .texto-derrota {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--morado-oscuro);
+    text-shadow: 1px 1px 0 var(--morado), 0 0 20px rgba(151, 76, 201, 0.8);
+    letter-spacing: 4px;
+    margin-top: 10px;
+    animation: zoomVictoriaDerrota 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes brilloVictoria {
+    0%   { box-shadow: 0 0 10px rgba(201,168,76,0.3); }
+    50%  { box-shadow: 0 0 50px rgba(201,168,76,1), 0 0 100px rgba(201,168,76,0.5); }
+    100% { box-shadow: 0 0 30px rgba(201,168,76,0.8), 0 0 60px rgba(201,168,76,0.4); }
+}
+@keyframes brilloDerrota {
+    0%   { box-shadow: 0 0 10px rgba(157, 76, 201, 0.3); }
+    50%  { box-shadow: 0 0 50px rgb(138, 76, 201), 0 0 100px rgba(143, 76, 201, 0.5); }
+    100% { box-shadow: 0 0 30px rgba(147, 76, 201, 0.8), 0 0 60px rgba(136, 76, 201, 0.4); }
+}
+
+@keyframes zoomVictoriaDerrota {
+    0%   { transform: scale(0.3); opacity: 0; }
+    70%  { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); }
+}
+

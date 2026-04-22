@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Aventuras de Shrek</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="UP4_Tarea2_AlbaLlano.css">
+</head>
+
+<body>
+
+    <h1>Las Aventuras de Shrek</h1>
+
+    <div id="layout">
+        <!-- FORMULARIO -->
+        <div id="columna-izquierda">
+            <h2>Elige tus opciones de ataque</h2>
+            <form>
+                <fieldset><!--fieldset agrupa, legend es el titulo-->
+                    <legend>Personaje</legend>
+                    <select id="personaje">
+                         <option value="" disabled selected> Elige personaje </option><!-- disabled no la deja seleccionar, selected empieza seleccionada-->
+                        <option value="shrek">Shrek</option>
+                        <option value="fiona">Fiona</option>
+                        <option value="burro">Burro</option>
+                        <option value="gato-botas">Gato con Botas</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Arma</legend>
+                    <label><input type="radio" name="arma" value="espada"> Espada</label>
+                    <label><input type="radio" name="arma" value="arco"> Arco</label>
+                    <label><input type="radio" name="arma" value="cetro"> Cetro</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Armadura del Enemigo</legend>
+                    <select id="armadura">
+                        <option value="" disabled selected> Elige la armadura </option>
+                        <option value="pesada">Pesada</option>
+                        <option value="media">Media</option>
+                        <option value="ligera">Ligera</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <label>
+                        <input type="checkbox" id="critico"> Intentar golpe crítico
+                    </label>
+                </fieldset>
+
+                <button type="button" onclick="AtaqueMasivo()">Atacar</button>
+            </form>
+        </div>
+
+        <!-- IMAGENES Y RESULTADO -->
+        <div id="columna-derecha">
+
+            <!-- IMAGENES -->
+            <div id="zona-imagenes">
+                <div id="imagenes-personajes">
+                    <img id="shrek" src="recursos/shrek.webp" class="oculto" alt="Shrek">
+                    <img id="fiona" src="recursos/fiona.jpg" class="oculto" alt="Fiona">
+                    <img id="burro" src="recursos/burro.png" class="oculto" alt="Burro">
+                    <img id="gato-botas" src="recursos/gato.webp" class="oculto" alt="Gato con Botas">
+                </div>
+
+                <div id="imagenes-armaduras">
+                    <img id="armadura-pesada" src="recursos/pesada.jpg" class="oculto" alt="Armadura Pesada">
+                    <img id="armadura-media" src="recursos/media.jpg" class="oculto" alt="Armadura Media">
+                    <img id="armadura-ligera" src="recursos/ligera.jpg" class="oculto" alt="Armadura Ligera">
+                </div>
+            </div>
+
+            <!-- VIDA ENEMIGO -->
+            <div id="div-vida-enemigo">
+                <p id="etiqueta-vida">Vida del enemigo: <span id="vida-actual">1000</span> / 1000</p>
+                <div id="barra-vida-contenedor">
+                    <div id="barra-vida"></div>
+                </div>
+            </div>
+            <!-- VIDA JUGADOR -->
+            <div id="div-vida-jugador">
+                <p id="etiqueta-vida-jugador">Vida personaje: <span id="vida-actual-jugador">1000</span> / 1000</p>
+                <div id="barra-vida-contenedor-jugador">
+                    <div id="barra-vida-jugador"></div>
+                </div>
+            </div>
+
+            <!-- RESULTADO -->
+            <div id="div-resultado">
+                <p id="resultado"></p>
+            </div>
+
+        </div>
+    </div>
+<a href="informe.html"><img src="recursos/rueda.png" alt="Informe"width="40"></a>
+    <script src="UP4_Tarea2_AlbaLlano.js"></script>
+</body>
+
+</html>

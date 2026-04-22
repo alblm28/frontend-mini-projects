@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Paletas de Colores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Generador de Paletas</h1>
+        <p>Crea combinaciones armoniosas de colores</p>
+    </header>
+
+    <main>
+        <section class="controles">
+            <h2>Tipo de Combinación</h2>
+            <nav class="botones-tipo">
+                <button class="btn-tipo active" data-tipo="aleatorio">Aleatorio</button>
+                <button class="btn-tipo" data-tipo="complementario">Complementario</button>
+                <button class="btn-tipo" data-tipo="analogo">Análogo</button>
+                <button class="btn-tipo" data-tipo="triadico">Triádico</button>
+                <button class="btn-tipo" data-tipo="tetradico">Tetrádico</button>
+                <button class="btn-tipo" data-tipo="monocromatico">Monocromático</button>
+            </nav>
+
+            <section class="controles-cantidad">
+                <label for="cantidad-colores">Cantidad de colores:</label>
+                <input type="number" id="cantidad-colores" min="2" max="5" value="5">
+            </section>
+
+            <button id="generar-paleta" class="btn-principal">Generar Paleta</button>
+        </section>
+
+        <section id="paleta-contenedor" class="paleta">
+            <!-- los colores se generan aqui dinamicamente -->
+        </section>
+    </main>
+
+    <footer>
+        <p>Pulsa la barra espaciadora para generar una nueva paleta</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
