@@ -11,8 +11,8 @@ Varias prácticas básicas de clase con js, html y css:
 
 ![rpg shrek](PREVIEW/shrek.png)
 ![generador de paletas](PREVIEW/colores.png)
-![ selección de nivel](examenArte/RECURSOS/test_arte_principal.png)
-![nivel medio](examenArte/RECURSOS/muestra_nivel.png)
+![ selección de nivel](PREVIEW/test_arte_principal.png)
+![nivel medio](PREVIEW/muestra_nivel.png)
 ![calculadora de densidad de pantalla](PREVIEW/pixeles.png)
 
 
