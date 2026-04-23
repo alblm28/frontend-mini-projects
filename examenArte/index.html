@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Arte Contemporáneo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--TITULO-->
+    <header class="header">
+        <h1>Test de Arte Contemporáneo</h1>
+        <p>Siglos XIX - XX</p>
+    </header>
+
+    <!-- IMAGEN APROBADO, css la oculta-->
+    <img src="RECURSOS/aprobado1.png" alt="" class="imagen-aprobado" id="imagenAprobado1">
+
+    <!-- MENÚ -->
+    <section class="level-selection" id="levelSelection">
+        <h2>Selecciona el nivel de dificultad</h2>
+        <nav class="level-buttons">
+            <button class="level-btn facil" onclick="startTest('facil')">
+                Fácil <!--ONCLICK llama a la funcion js-->
+                <span class="level-desc">Conceptos básicos para principiantes</span>
+            </button>
+            <button class="level-btn medio" onclick="startTest('medio')">
+                Medio
+                <span class="level-desc">Preguntas estándar para aficionados al arte</span>
+            </button>
+            <button class="level-btn dificil" onclick="startTest('dificil')">
+                Difícil
+                <span class="level-desc">Conocimiento profundo para profesionales</span>
+            </button>
+        </nav>
+    </section>
+
+    <!-- BOTON VOLVER -->
+    <aside class="sidebar-volver" id="sidebarVolver" style="display: none;">
+        <button class="volver-btn" onclick="volverAlMenu()"><!--display none para ocultar-->
+            Volver al Menú
+        </button>
+    </aside>
+
+    <!-- CALCULAR NOTA -->
+    <aside class="sidebar-nota" id="sidebarNota" style="display: none;">
+        <button class="calcular-nota-btn" onclick="calcularNotaFinal()">
+            Calcular Nota Final
+        </button>
+        <section class="nota-display">
+            <p>Nota: <span id="notaActual">--</span> / 6</p>
+        </section><!--js la cambia luego-->
+    </aside>
+
+    <!-- TEST FÁCIL -->
+    <main class="test-container" id="testFacil" style="display: none;">
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 1</h2>
+                <p>¿Qué artista pintó "La persistencia de la memoria" con los famosos relojes derretidos?</p>
+            </header>
+            <form id="form-facil-p1"><!--js recibe value para operar-->
+                <label><input type="radio" name="facil-p1" value="picasso">Pablo Picasso</label>
+                <label><input type="radio" name="facil-p1" value="dali">Salvador Dalí</label>
+                <label><input type="radio" name="facil-p1" value="miro">Joan Miró</label>
+                <label><input type="radio" name="facil-p1" value="magritte">René Magritte</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('facil-p1')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('facil-p1')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-facil-p1"></output>
+            </footer><!--output muestra si es correcto o no-->
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 2</h2>
+                <p>¿Cuáles son características del Cubismo? (Selecciona todas las correctas)</p>
+            </header>
+            <form id="form-facil-p2"><!--checkbox para preguntas de seleccion multiple-->
+                <label><input type="checkbox" name="facil-p2" value="fragmentacion">Fragmentación de formas</label>
+                <label><input type="checkbox" name="facil-p2" value="perspectivas">Múltiples perspectivas</label>
+                <label><input type="checkbox" name="facil-p2" value="colores">Colores vibrantes y emotivos</label>
+                <label><input type="checkbox" name="facil-p2" value="geometria">Planos geométricos</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('facil-p2')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('facil-p2')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-facil-p2"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 3</h2>
+                <p>¿Cuál es el nombre de este cuadro?</p>
+                <img src="RECURSOS/caminante.jpg" alt="Cuadro" class="imagen-pregunta">
+            </header>
+            <form id="form-facil-p3">
+                <label><input type="radio" name="facil-p3" value="impresion">Impresión, sol naciente</label>
+                <label><input type="radio" name="facil-p3" value="caminante">Caminante frente al mar de nubes</label>
+                <label><input type="radio" name="facil-p3" value="grito">El grito</label>
+                <label><input type="radio" name="facil-p3" value="noche">La noche estrellada</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('facil-p3')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('facil-p3')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-facil-p3"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 4</h2>
+                <p>El Expresionismo Abstracto se desarrolló principalmente en:</p>
+            </header>
+            <form id="form-facil-p4">
+                <label><input type="radio" name="facil-p4" value="paris">París</label>
+                <label><input type="radio" name="facil-p4" value="berlin">Berlín</label>
+                <label><input type="radio" name="facil-p4" value="nuevaYork">Nueva York</label>
+                <label><input type="radio" name="facil-p4" value="londres">Londres</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('facil-p4')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('facil-p4')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-facil-p4"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 5</h2>
+                <p>¿Cuáles de estos artistas pertenecieron al impresionismo? (Selecciona todas las correctas)</p>
+            </header>
+            <form id="form-facil-p5">
+                <label><input type="checkbox" name="facil-p5" value="monet">Claude Monet</label>
+                <label><input type="checkbox" name="facil-p5" value="renoir">Pierre-Auguste Renoir</label>
+                <label><input type="checkbox" name="facil-p5" value="picasso">Pablo Picasso</label>
+                <label><input type="checkbox" name="facil-p5" value="degas">Edgar Degas</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('facil-p5')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('facil-p5')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-facil-p5"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 6</h2>
+                <p>Selecciona los cuadros que pertenezcan al movimiento realismo:</p>
+            </header>
+            <form id="form-facil-p6" class="form-imagenes">
+                <label class="label-imagen">
+                    <input type="checkbox" name="facil-p6" value="realismo1">
+                    <img src="RECURSOS/realismo1.jpg" alt="Opción 1">
+                    <!--en lugar de texto la opcion es una foto-->
+                </label>
+                <label class="label-imagen">
+                    <input type="checkbox" name="facil-p6" value="realismo2">
+                    <img src="RECURSOS/realismo2.jpg" alt="Opción 2">
+                </label>
+                <label class="label-imagen">
+                    <input type="checkbox" name="facil-p6" value="realismo3">
+                    <img src="RECURSOS/realismo3.jpg" alt="Opción 3">
+                </label>
+                <label class="label-imagen">
+                    <input type="checkbox" name="facil-p6" value="realismo4">
+                    <img src="RECURSOS/realismo4.jpg" alt="Opción 4">
+                </label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('facil-p6')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('facil-p6')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-facil-p6"></output>
+            </footer>
+        </article>
+
+        <section class="resultado-final" id="resultadoFinalFacil" style="display: none;"></section>
+    </main>
+
+    <!-- TEST MEDIO -->
+    <main class="test-container" id="testMedio" style="display: none;">
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 1</h2>
+                <p>¿Cuáles de los siguientes son cuadros de Eugène Delacroix? (Selecciona todas las correctas)</p>
+            </header>
+            <form id="form-medio-p1" class="form-imagenes">
+                <label class="label-imagen">
+                    <input type="checkbox" name="medio-p1" value="delacroix1">
+                    <img src="RECURSOS/delacroix1.jpg" alt="Opción 1">
+                </label>
+                <label class="label-imagen">
+                    <input type="checkbox" name="medio-p1" value="delacroix2">
+                    <img src="RECURSOS/delacroix2.jpg" alt="Opción 2">
+                </label>
+                <label class="label-imagen">
+                    <input type="checkbox" name="medio-p1" value="delacroix3">
+                    <img src="RECURSOS/delacroix3.jpg" alt="Opción 3">
+                </label>
+                <label class="label-imagen">
+                    <input type="checkbox" name="medio-p1" value="delacroix4">
+                    <img src="RECURSOS/delacroix4.jpg" alt="Opción 4">
+                </label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('medio-p1')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('medio-p1')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-medio-p1"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 2</h2>
+                <p>¿Cuáles fueron vertientes del Expresionismo Abstracto? (Selecciona todas las correctas)</p>
+            </header>
+            <form id="form-medio-p2">
+                <label><input type="checkbox" name="medio-p2" value="onirica">Pintura Onírica</label>
+                <label><input type="checkbox" name="medio-p2" value="contemplativa">Pintura Contemplativa</label>
+                <label><input type="checkbox" name="medio-p2" value="automatica">Pintura Automática</label>
+                <label><input type="checkbox" name="medio-p2" value="accion">Pintura de Acción</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('medio-p2')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('medio-p2')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-medio-p2"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 3</h2>
+                <p>¿Qué obra marcó el inicio del Cubismo analítico?</p>
+            </header>
+            <form id="form-medio-p3">
+                <label><input type="radio" name="medio-p3" value="guernica">Guernica</label>
+                <label><input type="radio" name="medio-p3" value="avignon">Las señoritas de Avignon</label>
+                <label><input type="radio" name="medio-p3" value="musicos">Los tres músicos</label>
+                <label><input type="radio" name="medio-p3" value="botella">Botella de Vieux Marc</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('medio-p3')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('medio-p3')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-medio-p3"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 4</h2>
+                <p>¿Cuál es el nombre de este cuadro?</p>
+                <img src="RECURSOS/medusa.jpg" alt="Cuadro" class="imagen-pregunta">
+            </header>
+            <form id="form-medio-p4">
+                <label><input type="radio" name="medio-p4" value="medusa">La balsa de la Medusa</label>
+                <label><input type="radio" name="medio-p4" value="dante">La barca de Dante</label>
+                <label><input type="radio" name="medio-p4" value="quios">La matanza de Quios</label>
+                <label><input type="radio" name="medio-p4" value="juramento">El juramento de los Horacios</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('medio-p4')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('medio-p4')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-medio-p4"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 5</h2>
+                <p>¿Cuál de las siguientes es característica del Futurismo?</p>
+            </header>
+            <form id="form-medio-p5">
+                <label><input type="radio" name="medio-p5" value="velocidad">Exaltación de la velocidad y el
+                    dinamismo</label>
+                <label><input type="radio" name="medio-p5" value="inconsciente">Exploración del inconsciente</label>
+                <label><input type="radio" name="medio-p5" value="colores">Uso de colores puros y vibrantes</label>
+                <label><input type="radio" name="medio-p5" value="geometria">Formas geométricas simples</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('medio-p5')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('medio-p5')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-medio-p5"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 6</h2>
+                <p>¿Por qué surgió el movimiento Dadaísta?</p>
+                <img src="RECURSOS/dadaismo.jpg" alt="Ilustración Dadaísmo" class="imagen-pregunta">
+            </header>
+            <form id="form-medio-p6">
+                <label><input type="radio" name="medio-p6" value="revolucion">Como apoyo a la Revolución
+                    Industrial</label>
+                <label><input type="radio" name="medio-p6" value="eugene">En Honor al pintor Eugène Dadá</label>
+                <label><input type="radio" name="medio-p6" value="ciencia">Como celebración de los avances
+                    científicos</label>
+                <label><input type="radio" name="medio-p6" value="guerra">Por el rechazo a la Primera Guerra Mundial y
+                    los valores tradicionales</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('medio-p6')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('medio-p6')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-medio-p6"></output>
+            </footer>
+        </article>
+
+        <section class="resultado-final" id="resultadoFinalMedio" style="display: none;"></section>
+    </main>
+
+    <!-- TEST DIFÍCIL -->
+    <main class="test-container" id="testDificil" style="display: none;">
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 1</h2>
+                <p>¿Cuáles de estos artistas pertenecieron al movimiento De Stijl? (Selecciona todas las correctas)</p>
+            </header>
+            <form id="form-dificil-p1">
+                <label><input type="checkbox" name="dificil-p1" value="mondrian">Piet Mondrian</label>
+                <label><input type="checkbox" name="dificil-p1" value="doesburg">Theo van Doesburg</label>
+                <label><input type="checkbox" name="dificil-p1" value="kandinsky">Wassily Kandinsky</label>
+                <label><input type="checkbox" name="dificil-p1" value="malevich">Kazimir Malévich</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('dificil-p1')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('dificil-p1')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-dificil-p1"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 2</h2>
+                <p>¿Qué dos personajes se representan en duelo en la siguiente ilustración?</p>
+                <img src="RECURSOS/duelo.jpg" alt="Ilustración duelo" class="imagen-pregunta">
+            </header>
+            <form id="form-dificil-p2">
+                <label><input type="radio" name="dificil-p2" value="picasso">Picasso y Matisse</label>
+                <label><input type="radio" name="dificil-p2" value="monet">Monet y Renoir</label>
+                <label><input type="radio" name="dificil-p2" value="ingres">Ingres y Delacroix</label>
+                <label><input type="radio" name="dificil-p2" value="dali">Dalí y Miró</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('dificil-p2')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('dificil-p2')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-dificil-p2"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 3</h2>
+                <p>¿Quién escribió el "Manifiesto del Surrealismo" en 1924?</p>
+            </header>
+            <form id="form-dificil-p3">
+                <label><input type="radio" name="dificil-p3" value="dali">Salvador Dalí</label>
+                <label><input type="radio" name="dificil-p3" value="breton">André Breton</label>
+                <label><input type="radio" name="dificil-p3" value="ernst">Max Ernst</label>
+                <label><input type="radio" name="dificil-p3" value="magritte">René Magritte</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('dificil-p3')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('dificil-p3')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-dificil-p3"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 4</h2>
+                <p>¿En qué se diferencian el Suprematismo del Constructivismo ruso?</p>
+            </header>
+            <form id="form-dificil-p4">
+                <label><input type="radio" name="dificil-p4" value="espiritual">El Suprematismo busca lo espiritual, el
+                    Constructivismo lo funcional y social</label>
+                <label><input type="radio" name="dificil-p4" value="colores">El Suprematismo usa colores cálidos, el
+                    Constructivismo fríos</label>
+                <label><input type="radio" name="dificil-p4" value="figuras">El Suprematismo representa figuras, el
+                    Constructivismo es abstracto</label>
+                <label><input type="radio" name="dificil-p4" value="epocas">El Suprematismo es del siglo XIX, el
+                    Constructivismo del XX</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('dificil-p4')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('dificil-p4')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-dificil-p4"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 5</h2>
+                <p>¿Qué artista fue miembro del grupo expresionista alemán "Die Brücke"?</p>
+            </header>
+            <form id="form-dificil-p5">
+                <label><input type="radio" name="dificil-p5" value="chirico">Giorgio de Chirico</label>
+                <label><input type="radio" name="dificil-p5" value="klimt">Gustav Klimt</label>
+                <label><input type="radio" name="dificil-p5" value="matisse">Henri Matisse</label>
+                <label><input type="radio" name="dificil-p5" value="kirchner">Ernst Ludwig Kirchner</label>
+
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('dificil-p5')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('dificil-p5')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-dificil-p5"></output>
+            </footer>
+        </article>
+
+        <article class="question-block">
+            <header>
+                <h2>Pregunta 6</h2>
+                <p>¿De qué estilo es el siguiente cuadro?</p>
+                <img src="RECURSOS/turner.jpg" alt="Cuadro de Turner" class="imagen-pregunta">
+            </header>
+            <form id="form-dificil-p6">
+                <label><input type="radio" name="dificil-p6" value="romanticismo">Romanticismo inglés</label>
+                <label><input type="radio" name="dificil-p6" value="expresionismoAbstracto">Expresionismo
+                    Abstracto</label>
+                <label><input type="radio" name="dificil-p6" value="expresionismoAleman">Expresionismo Alemán</label>
+                <label><input type="radio" name="dificil-p6" value="futurismo">Futurismo</label>
+            </form>
+            <footer class="question-footer">
+                <button class="reset-btn" onclick="resetearPregunta('dificil-p6')"> Resetear</button>
+                <button class="check-btn" onclick="comprobarRespuesta('dificil-p6')">✓ Comprobar</button>
+                <output class="resultado" id="resultado-dificil-p6"></output>
+            </footer>
+        </article>
+
+        <section class="resultado-final" id="resultadoFinalDificil" style="display: none;"></section>
+    </main>
+
+    <script src="script.js"></script><!--enlaza al script-->
+</body>
+
+</html>

@@ -1,0 +1,738 @@
+/*para todos los elementos*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*ancho incluye padding y margin*/
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-image: url(RECURSOS/museum-background-i46ank5l1sk9bubq.jpg);
+    background-size: cover;
+    /*cubre todo body*/
+    background-attachment: fixed;
+    /*fondo fijo al hacer scroll*/
+}
+
+body::before {
+    /*crea pseudoelemento vacio transparente*/
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    /* para q no interfiera con botones*/
+    z-index: 0;
+    /*profundidad*/
+}
+
+body.aprobado::before {
+    background: rgba(86, 171, 47, 0.7);
+}
+
+/*cuando body tiene la clase, pone el color de fondo*/
+body.suspenso::before {
+    background: rgba(235, 51, 73, 0.7);
+}
+
+body>* {
+    /*para los hijos directos del body (dentro directamente sin estar anidado a otro)*/
+    position: relative;
+    z-index: 1;
+}
+
+
+.imagen-aprobado {
+    position: fixed;
+    bottom: 100px;
+    left: 40px;
+    height: 34vh;
+    /*altura relativa al viewport, 40% altura*/
+    max-height: 300px;
+    width: auto;
+    z-index: 1200;
+    opacity: 0;
+    transform: translateX(-120px);
+    /*inicia oculta, no impide q se pueda interactuar como display: none*/
+    transition: opacity 0.8s ease-out;
+    pointer-events: none;
+}
+
+body.aprobado .imagen-aprobado {
+    /*cuando js pone a body la clase aprobado la opacidad cambia*/
+    /*body.classList.add('aprobado');*/
+    opacity: 1;
+    animation: entrarDesdeIzquierda 0.8s ease-out forwards;
+}
+
+.header {
+    background: linear-gradient(135deg, #242a45 0%, #262e50 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.level-selection {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.level-selection h2 {
+    color: #343434;
+    margin-bottom: 40px;
+    font-size: 1.8em;
+}
+
+.level-buttons {
+    /*contenedor botones menu*/
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.level-btn {
+    /*cada boton del menu*/
+    padding: 25px 30px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;/*el cursor cambia a forma de clickar*/
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;/* pone en la pantalla en mayus texto q en html no lo está*/
+    letter-spacing: 1px;
+}
+
+.level-btn .level-desc {
+    /*descripcion del nivel*/
+    display: block;
+    font-size: 0.6em;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 8px;
+    opacity: 0.9;
+    font-weight: normal;
+}
+
+.level-btn.facil {
+    background: linear-gradient(135deg, #94deaf 0%, #8fd3f4 100%);
+    color: #2d5f4f;
+}
+
+.level-btn.medio {
+    background: linear-gradient(135deg, #ffa751 0%, #ffe259 100%);
+    color: #7d5a1a;
+}
+
+.level-btn.dificil {
+    background: linear-gradient(135deg, #fc466b 0%, #b43f64 100%);
+    color: white;
+}
+
+.level-btn:hover {
+    /*al pasar el cursor*/
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.level-btn:active {
+    /*al clickar*/
+    transform: translateY(-1px);
+    /*baja un poco. como si se presionase*/
+}
+
+/* botón volver */
+.sidebar-volver {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.volver-btn {
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;/*el cursor cambia al de clickar*/
+    background: linear-gradient(135deg, #efe695 0%, #f5e557 100%);
+    color: rgb(92, 89, 61);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.volver-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.volver-btn:active {
+    transform: translateY(0);
+}
+
+/* espacio calcular nota */
+.sidebar-nota {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    min-width: 200px;
+}
+/*boton concreto de calcular nota*/
+.calcular-nota-btn {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #efe695 0%, #f5e557 100%);
+    color: rgb(92, 89, 61);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(77, 85, 43, 0.4);
+}
+
+.calcular-nota-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 213, 93, 0.6);
+}
+
+.calcular-nota-btn:active {
+    transform: translateY(0);
+}
+
+/*espacio resultado nota bajo boton*/
+.nota-display {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.nota-display p {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+}
+
+.nota-display span {
+    font-size: 1.5em;
+    color: #667eea;
+}
+
+/*espacio preguntas*/
+.test-container {
+    padding-bottom: 40px;
+     max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in;
+}
+/*bloque pregunta*/
+.question-block {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.question-block:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: translateX(5px);
+}
+
+.question-block.respondida {
+    opacity: 0.85;
+    border-left-color: #6c757d;
+}
+
+.question-block header h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.question-block header p {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* imagen en pregunta */
+.imagen-pregunta {
+    display: block;
+    width: 30%;
+    max-width: 250px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* seleccion de apartados especificos para cambiar el tamaño de su imagen */
+#testMedio .question-block:nth-child(4) .imagen-pregunta,
+#testMedio .question-block:nth-child(6) .imagen-pregunta,
+#testDificil .question-block:nth-child(6) .imagen-pregunta {
+    width: 50%;
+    max-width: 400px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+form label:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.question-block.respondida form label {
+    cursor: not-allowed;/*simbolo de prohibicion*/
+    pointer-events: none;
+}
+
+/*imagenes respuesta*/
+.form-imagenes {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.label-imagen {
+    flex: 1;
+    min-width: 150px;
+    max-width: 23%;
+    padding: 0 ;
+    margin: 0 ;
+    background: transparent ;
+    border: 3px solid transparent ;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.label-imagen:hover {
+    transform: translateY(-5px);
+    border-color: #667eea ;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.label-imagen input[type="checkbox"] {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    z-index: 10;
+    cursor: pointer;
+    margin: 0;
+}
+
+.label-imagen img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+}
+
+/*cuando seleccionas img*/
+.label-imagen input[type="checkbox"]:checked+img {
+    outline: 4px solid #667eea;
+    outline-offset: -4px;/*borde interior*/
+}
+
+/*respuesta seleccionada*/
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+}
+
+.question-footer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*botones reset y check*/
+.reset-btn,
+.check-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    color: #2d3436;
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(253, 203, 110, 0.4);
+}
+
+.check-btn {
+    background: linear-gradient(135deg, #616ea8 0%, #4d418a 100%);
+    color: white;
+}
+
+.check-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/*al desabilitar botones*/
+.check-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.check-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+.reset-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+input[type="radio"]:disabled,
+input[type="checkbox"]:disabled {
+    accent-color: #6c757d;
+    
+    opacity: 0.6;
+}
+
+.reset-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/*resultados*/
+.resultado {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    min-width: 200px;
+    display: block;
+}
+
+.resultado.correcto {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745;
+    animation: pulse 0.5s ease-in-out;
+}
+
+.resultado.incorrecto {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #dc3545;
+    animation: pulse 0.5s ease-in-out;
+}
+
+.respuesta-correcta {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+
+.resultado-final {
+    margin: 50px 0;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: slideUp 0.6s ease-out;
+    position: relative;
+    z-index: 3;
+}
+
+.resultado-final h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.resultado-final.aprobado h2 {
+    color: #28a745;
+}
+
+.resultado-final.suspenso h2 {
+    color: #dc3545;
+}
+
+.nota-final {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #667eea;
+}
+
+.mensaje-texto {
+    font-size: 1.3em;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/*ANIMACIONES*/
+
+/*aparecer*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*pulsar*/
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/*aparecer arriba*/
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/*entrar izquierda*/
+@keyframes entrarDesdeIzquierda {
+    from {
+        opacity: 0;
+        transform: translateX(-120px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* OTRAS PANTALLAS */
+@media (max-width: 1100px) {
+    .imagen-aprobado {
+        max-height: 100px;
+        left: 0.1%;
+        bottom: 200px;
+    }
+
+    .sidebar-nota {
+        position: fixed;
+        z-index: 1300;
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+    }
+
+    .sidebar-volver {
+        position: relative;
+        z-index: 1300;
+        top: auto;
+        left: auto;
+        max-width: 800px;
+        margin: 0 auto 20px auto;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .header p {
+        font-size: 0.9em;
+    }
+
+    .level-selection {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .level-selection h2 {
+        font-size: 1.4em;
+        margin-bottom: 25px;
+    }
+
+    .level-btn {
+        padding: 20px 25px;
+        font-size: 1.1em;
+    }
+
+    .volver-btn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+
+    .question-block {
+        padding: 15px;
+    }
+
+    .question-block header h2 {
+        font-size: 1.1em;
+    }
+
+    .question-block header p {
+        font-size: 1em;
+    }
+
+    .imagen-pregunta {
+        width: 50%;
+        max-width: 200px;
+    }
+
+    #testMedio .question-block:nth-child(4) .imagen-pregunta,
+    #testMedio .question-block:nth-child(6) .imagen-pregunta {
+        width: 70%;
+        max-width: 300px;
+    }
+
+    .form-imagenes {
+        flex-direction: column;
+    }
+
+    .label-imagen {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .label-imagen img {
+        height: 200px;
+    }
+
+    .question-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .reset-btn,
+    .check-btn {
+        width: 100%;
+    }
+
+    .resultado {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .sidebar-nota {
+        padding: 15px;
+    }
+
+    .calcular-nota-btn {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+
+    .resultado-final {
+        padding: 25px;
+    }
+
+    .resultado-final h2 {
+        font-size: 2em;
+    }
+
+    .nota-final {
+        font-size: 2.5em;
+    }
+
+    .mensaje-texto {
+        font-size: 1.1em;
+    }
+}
+
+
