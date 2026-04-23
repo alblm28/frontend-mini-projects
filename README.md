@@ -6,10 +6,13 @@ Varias prácticas básicas de clase con js, html y css:
 
 - RPG simple inspirado en Shrek
 - generador de paletas de colores
+- test multinivel de historia del arte
 - calculadora de densidad de pantalla
 
 ![rpg shrek](PREVIEW/shrek.png)
 ![generador de paletas](PREVIEW/colores.png)
+![ selección de nivel](examenArte/RECURSOS/test_arte_principal.png)
+![nivel medio](examenArte/RECURSOS/muestra_nivel.png)
 ![calculadora de densidad de pantalla](PREVIEW/pixeles.png)
 
 
@@ -23,10 +26,14 @@ Varias prácticas básicas de clase con js, html y css:
 - Generar paleta
 - Bloquear colores
 
+## Funcionalidades Test de arte
+
+- Seleccionar nivel
+- Responder pregunta
+- Ver resultados
+- 
 ## Funcionalidades Calculadora densidad de píxeles
 - Introducir datos y ver resultados
-
-
 
 ## Tecnologías
 
