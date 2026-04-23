@@ -1,4 +1,4 @@
-# Practicas-clase
+# Frontend-mini-projects
 
 ## Descripción
 
